@@ -2,6 +2,9 @@
 
 This module keeps tracking anaytics page views and events organized.
 
+## Demo
+http://joannaong.github.io/analytics-tracking-class/
+
 ## Set up
 Include your analytics tracking code before the ending ```</head>``` of your html.
 
