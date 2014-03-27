@@ -42,7 +42,15 @@ tracker.trackEvent(_category, _action, _optLabel, _optValue);
 ```
 
 Event tracking: outbound links
+
 We need to set a time out for outbound links to give google analytics enough time to track.
+You can call it inside the html using 
 ```
+Tracker.trackOutboundLink(this, _link, _category, _action);
+
 <a target="_blank" href="https://twitter.com/" onClick="Tracker.trackOutboundLink(this, _link, _category, _action); return false;"></a>
 ```
+
+## Testing
+- Check your console logs
+- Check google analytics interface. Go to 'Real-Time' on the right hand side of the dashboard, you should be able to see your trackEvent firing under the 'Events' section. And trackPage firing under 'Overview'.
