@@ -6,6 +6,13 @@
 	<title></title>
 	<meta name="description" content="">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
+
+	<style>
+	body {
+		font-family: Helvetica;
+		font-size: 12px;
+	}
+	</style>
 	
 	<!-- add analytics tracking code -->
 	<script>
@@ -19,8 +26,11 @@
 	</script>
 </head>
 <body>
+	<h1>Analytics tracking module</h1>
+	<p>
   <button id="btn-trackpage">Track Page</button>
   <button id="btn-trackevent">Track Event</button>
+  <p class="log"></p>
 
 	<!-- jquery -->
 	<script src="http://code.jquery.com/jquery-2.1.0.min.js"></script>
@@ -32,9 +42,11 @@
 	<script>
 		$("#btn-trackpage").on("click", function(e) {
 			tracker.trackPage("trackpage button", "page view");
+			$(".log").html("[TRACKING PAGEVIEW] PAGE: trackpage button");
 		});
 		$("#btn-trackevent").on("click", function(e) {
 			tracker.trackEvent("trackevent button", "click");
+			$(".log").html("[TRACKING EVENT] CATEGORY: trackevent button | ACTION: click | LABEL: 0 | VALUE: 0");
 		})
 	</script>
 </body>

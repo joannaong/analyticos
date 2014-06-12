@@ -1,9 +1,9 @@
 # Analytics tracking module
 
-This module keeps tracking anaytics page views and events organized.
+This module facilitates Google Anaytics tracking (page views and events) organized.
 
 ## Demo
-http://joannaong.github.io/analytics-tracking-class/
+http://joannaong.github.io/analytics-tracking-module/
 
 ## Set up
 Include your analytics tracking code before the ending ```</head>``` of your html.
@@ -57,3 +57,6 @@ Tracker.trackOutboundLink(this, _link, _category, _action);
 ## Testing
 - Check your console logs
 - Check google analytics interface. Go to 'Real-Time' on the right hand side of the dashboard, you should be able to see your trackEvent firing under the 'Events' section. And trackPage firing under 'Overview'.
+
+## References
+https://developers.google.com/analytics/devguides/collection/analyticsjs/
