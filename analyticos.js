@@ -29,9 +29,9 @@ var tracker = (function () {
 		call it like this in yer HTML
 		<a target="_blank" href="https://twitter.com/spoilsofbabylon" onClick="Tracker.trackOutboundLink(this, _link, _category, _action); return false;"></a>
 		*/
-		trackOutboundLink:function(_link, _category, _action, _optLabel, _optValue) {
-			_category = _category || 0;
-			_action = _action || 0;
+		trackOutboundLink:function(_link, _category, _action, _optLabel, _optValue){
+			_optLabel = _optLabel || 0;
+			_optValue = _optValue || 0;
 
 			try {
 				ga('send', 'event', _category, _action, _optLabel, _optValue);
@@ -39,7 +39,7 @@ var tracker = (function () {
 			
 			setTimeout(function() {window.open(_link.href,'_blank');}, 100);
 
-			console.log("%c[TRACKING EVENT] CATEGORY:"+_category+":"+_action, "background: orange; color: #fff;");
+			console.log("%c[TRACKING EVENT] CATEGORY: "+_category+" | ACTION: "+_action+" | LABEL: "+_optLabel +" | VALUE: "+_optValue, "background: orange; color: #fff;");
 		}
   };
 
