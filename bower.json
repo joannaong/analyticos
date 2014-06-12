@@ -2,11 +2,15 @@
   "name": "analyticos",
   "description": "This module facilitates Google Anaytics tracking (page views and events) organized.",
   "version": "0.2",
+  "main": "analyticos.js",
   "license": "MIT",
   "ignore": [
     "index.html"
   ],
-  "keywords": "google, analytics",
+  "keywords": [
+  	"google", 
+  	"analytics"
+  ],
   "authors": [
     {
       "name": "Joanna Ong",
