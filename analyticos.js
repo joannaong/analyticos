@@ -1,49 +1,71 @@
-var tracker = (function () {
+var analyticos = (function () {
 
-  var tracker = function () { };
+  var analyticos = function () { };
 
-  tracker.prototype = {
-    constructor: tracker,
+  analyticos.prototype = {
+    constructor: analyticos,
 
     /*
     MORE INFO @ https://developers.google.com/analytics/devguides/collection/analyticsjs/pages
 		*/
-		trackPage:function(_page){
-			ga('send', 'pageview', _page);
-			console.log("%c[TRACKING PAGEVIEW] PAGE: "+_page, "background: purple; color: #fff;");
+		trackPage:function(page){
+			ga('send', 'pageview', page);
+			console.log("%c[TRACKING PAGEVIEW] PAGE: "+page, "background: purple; color: #fff;");
 		},
 		
 		/*	
 		MORE INFO @ https://developers.google.com/analytics/devguides/collection/analyticsjs/events
 		*/
+		trackEvent:function(category, action, optLabel, optValue){
+			optLabel = optLabel || 0;
+			optValue = optValue || 0;
 
-		trackEvent:function(_category, _action, _optLabel, _optValue){
-			_optLabel = _optLabel || 0;
-			_optValue = _optValue || 0;
-
-			ga('send', 'event', _category, _action, _optLabel, _optValue);
-			console.log("%c[TRACKING EVENT] CATEGORY: "+_category+" | ACTION: "+_action+" | LABEL: "+_optLabel +" | VALUE: "+_optValue, "background: orange; color: #fff;");
+			ga('send', 'event', category, action, optLabel, optValue);
+			console.log("%c[TRACKING EVENT] CATEGORY: "+category+" | ACTION: "+action+" | LABEL: "+optLabel +" | VALUE: "+optValue, "background: orange; color: #fff;");
 		},
 
 		/*
 		call it like this in yer HTML
-		<a target="_blank" href="https://twitter.com/spoilsofbabylon" onClick="Tracker.trackOutboundLink(this, _link, _category, _action); return false;"></a>
+		<a target="_blank" href="https://twitter.com/spoilsofbabylon" onClick="analyticos.trackOutboundLink(this, _link, category, action); return false;"></a>
 		*/
-		trackOutboundLink:function(_link, _category, _action, _optLabel, _optValue){
-			_optLabel = _optLabel || 0;
-			_optValue = _optValue || 0;
+		// trackOutboundLink:function(_link, category, action) {
+		// 	category = category || 0;
+		// 	action = action || 0;
 
-			try {
-				ga('send', 'event', _category, _action, _optLabel, _optValue);
-			} catch(err){}
+		// 	try {
+		// 		ga('send', 'event', category, action);
+		// 	} catch(err){}
 			
-			setTimeout(function() {window.open(_link.href,'_blank');}, 100);
+		// 	setTimeout(function() {window.open(_link.href,'_blank');}, 100);
 
-			console.log("%c[TRACKING EVENT] CATEGORY: "+_category+" | ACTION: "+_action+" | LABEL: "+_optLabel +" | VALUE: "+_optValue, "background: orange; color: #fff;");
+		// 	console.log("%c[TRACKING EVENT] CATEGORY:"+category+":"+action, "background: orange; color: #fff;");
+		// }
+
+		trackOutboundLink:function(element, category, action, optLabel, optValue){
+			optLabel = optLabel || 0;
+			optValue = optValue || 0;
+	
+			element.on("click", function(e){
+				
+				var href = $(this).attr("href");
+				var target = $(this).attr("target");
+
+				if (target == "_blank") {
+					e.preventDefault();
+					ga('send', 'event', category, action, optLabel, optValue);
+
+					setTimeout(function() {
+						window.open(href,'_blank');
+					}, 70);
+
+					console.log("%c[TRACKING EVENT] CATEGORY: "+category+" | ACTION: "+action+" | LABEL: "+optLabel +" | VALUE: "+optValue, "background: orange; color: #fff;");
+				}
+			});
+			
 		}
   };
 
-  return tracker;
+  return analyticos;
 })();
 
-var tracker = new tracker();
+var analyticos = new analyticos();

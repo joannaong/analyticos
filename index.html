@@ -35,17 +35,17 @@
 	<!-- jquery -->
 	<script src="http://code.jquery.com/jquery-2.1.0.min.js"></script>
 
-	<!-- tracker class -->
+	<!-- analyticos class -->
 	<script src="analyticos.js"></script>
 
 	<!-- sample events -->
 	<script>
 		$("#btn-trackpage").on("click", function(e) {
-			tracker.trackPage("trackpage button", "page view");
+			analyticos.trackPage("trackpage button", "page view");
 			$(".log").html("[TRACKING PAGEVIEW] PAGE: trackpage button");
 		});
 		$("#btn-trackevent").on("click", function(e) {
-			tracker.trackEvent("trackevent button", "click");
+			analyticos.trackEvent("trackevent button", "click");
 			$(".log").html("[TRACKING EVENT] CATEGORY: trackevent button | ACTION: click | LABEL: 0 | VALUE: 0");
 		})
 	</script>

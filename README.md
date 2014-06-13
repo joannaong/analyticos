@@ -20,9 +20,9 @@ Include your analytics tracking code before the ending ```</head>``` of your htm
 </script>
 ```
 
-Include tracker.js
+Include analyticos.js
 ```javascript
-<script src="js/tracker.js"></script>
+<script src="js/analyticos.js"></script>
 ```
 
 ## Calls
@@ -30,18 +30,18 @@ Attach to a any handlers like this.
 
 ```javascript
 $("#btn-trackpage").on("click", function(e) {
-	tracker.trackPage("trackpage button", "page view");
+	analyticos.trackPage("trackpage button", "page view");
 });
 ```
 
 Page View tracking
 ```javascript
-tracker.trackPage(_page);
+analyticos.trackPage(page);
 ```
 
 Event tracking
 ```javascript
-tracker.trackEvent(_category, _action, _optLabel, _optValue);
+analyticos.trackEvent(category, action, optLabel, optValue);
 ```
 
 Event tracking: outbound links
@@ -49,9 +49,8 @@ Event tracking: outbound links
 We need to set a time out for outbound links to give google analytics enough time to track.
 You can call it inside the html using 
 ```
-Tracker.trackOutboundLink(this, _link, _category, _action);
-
-<a target="_blank" href="https://twitter.com/" onClick="Tracker.trackOutboundLink(this, _link, _category, _action); return false;"></a>
+analyticos.trackOutboundLink(element, category, action, optLabel, optValue);
+analyticos.trackOutboundLink($(this),'Main Menu', 'Click', $(this).text());
 ```
 
 ## Testing
