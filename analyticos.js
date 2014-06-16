@@ -46,20 +46,19 @@ var analyticos = (function () {
 			optValue = optValue || 0;
 	
 			element.on("click", function(e){
-				
+				e.preventDefault();
+
 				var href = $(this).attr("href");
 				var target = $(this).attr("target");
 
-				if (target == "_blank") {
-					e.preventDefault();
-					ga('send', 'event', category, action, optLabel, optValue);
+				ga('send', 'event', category, action, optLabel, optValue);
 
-					setTimeout(function() {
-						window.open(href,target);
-					}, 70);
+				setTimeout(function() {
+					window.open(href,target);
+				}, 70);
 
-					console.log("%c[TRACKING EVENT] CATEGORY: "+category+" | ACTION: "+action+" | LABEL: "+optLabel +" | VALUE: "+optValue, "background: orange; color: #fff;");
-				}
+				console.log("%c[TRACKING EVENT] CATEGORY: "+category+" | ACTION: "+action+" | LABEL: "+optLabel +" | VALUE: "+optValue, "background: orange; color: #fff;");
+
 			});
 			
 		}
