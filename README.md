@@ -55,7 +55,7 @@ Event tracking: outbound links
 
 We need to set a time out for outbound links to give google analytics enough time to track.
 You can call it the same way
-```
+```javascript
 analyticos.trackOutboundLink(element, category, action, optLabel, optValue);
 
 $(".sponsor-logo a").each(function(e) {
