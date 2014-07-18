@@ -1,9 +1,16 @@
-# Analytics tracking module
+# Analyticos
+
+Analytics Tracking Module.
 
 This module facilitates Google Anaytics tracking (page views and events) organized.
 
 ## Demo
-http://joannaong.github.io/analytics-tracking-module/
+http://joannaong.github.io/analyticos/
+
+## Install through bower
+```
+bower install analyticos
+```
 
 ## Set up
 Include your analytics tracking code before the ending ```</head>``` of your html.
@@ -22,7 +29,7 @@ Include your analytics tracking code before the ending ```</head>``` of your htm
 
 Include analyticos.js
 ```javascript
-<script src="js/analyticos.js"></script>
+<script src="analyticos/analyticos.js"></script>
 ```
 
 ## Calls
@@ -47,10 +54,13 @@ analyticos.trackEvent(category, action, optLabel, optValue);
 Event tracking: outbound links
 
 We need to set a time out for outbound links to give google analytics enough time to track.
-You can call it inside the html using 
+You can call it the same way
 ```
 analyticos.trackOutboundLink(element, category, action, optLabel, optValue);
-analyticos.trackOutboundLink($(this),'Main Menu', 'Click', $(this).text());
+
+$(".sponsor-logo a").each(function(e) {
+	analyticos.trackOutboundLink($(this),'Footer', 'Click', $(this).attr("name"));
+});
 ```
 
 ## Testing
