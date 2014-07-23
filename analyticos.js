@@ -46,10 +46,10 @@ var analyticos = (function () {
 			optValue = optValue || 0;
 	
 			element.on("click", function(e){
-				e.preventDefault();
+				// e.preventDefault();
 
-				var href = $(this).attr("href");
-				var target = $(this).attr("target");
+				// var href = $(this).attr("href");
+				// var target = $(this).attr("target");
 
 				ga('send', 'event', category, action, optLabel, optValue);
 
