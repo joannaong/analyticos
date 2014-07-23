@@ -53,9 +53,10 @@ var analyticos = (function () {
 
 				ga('send', 'event', category, action, optLabel, optValue);
 
-				setTimeout(function() {
-					window.open(href,target);
-				}, 70);
+				// setTimeout(function() {
+				// 	var win = window.open(href,target);
+				// 	win.focus();
+				// }, 70);
 
 				console.log("%c[TRACKING EVENT] CATEGORY: "+category+" | ACTION: "+action+" | LABEL: "+optLabel +" | VALUE: "+optValue, "background: orange; color: #fff;");
 
