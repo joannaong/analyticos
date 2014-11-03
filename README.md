@@ -37,7 +37,7 @@ Attach to a any handlers like this.
 
 ```javascript
 $("#btn-trackpage").on("click", function(e) {
-	analyticos.trackPage("trackpage button", "page view");
+	analyticos.trackPage("pagename");
 });
 ```
 
@@ -51,9 +51,14 @@ Event tracking
 analyticos.trackEvent(category, action, optLabel, optValue);
 ```
 
+Social tracking
+```javascript
+analyticos.trackSocial(socialNetwork, socialAction, socialTarget);
+```
+
 Event tracking: outbound links
 
-We need to set a time out for outbound links to give google analytics enough time to track.
+We need to set a time out for outbound links to give google analytics enough time to track. This only applies for links opened in the same window.
 You can call it the same way
 ```javascript
 analyticos.trackOutboundLink(element, category, action, optLabel, optValue);

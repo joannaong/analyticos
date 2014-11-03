@@ -25,6 +25,16 @@ var analyticos = (function () {
 		},
 
 		/*
+		MORE INFO @ https://developers.google.com/analytics/devguides/collection/analyticsjs/social-interactions
+		*/
+		trackSocial: function(socialNetwork, socialAction, socialTarget) {
+			ga('send', 'social', socialNetwork, socialAction, socialTarget);
+			console.log("%c[TRACKING SOCIAL] socialNetwork: "+socialNetwork+" | socialAction: "+socialAction+" | socialTarget: "+socialTarget, "background: green; color: #fff;");
+		},
+
+		
+
+		/*
 		call it like this in yer HTML
 		<a target="_blank" href="https://twitter.com/spoilsofbabylon" onClick="analyticos.trackOutboundLink(this, _link, category, action); return false;"></a>
 		*/
