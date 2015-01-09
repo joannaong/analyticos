@@ -1,5 +1,4 @@
 var analyticos = (function () {
-
   var analyticos = function () { };
 
   analyticos.prototype = {
@@ -16,11 +15,12 @@ var analyticos = (function () {
 		/*	
 		MORE INFO @ https://developers.google.com/analytics/devguides/collection/analyticsjs/events
 		*/
-		trackEvent:function(category, action, optLabel, optValue){
+		trackEvent:function(category, action, optLabel, optValue, __nonInt){
 			optLabel = optLabel || 0;
 			optValue = optValue || 0;
+			nonInt = __nonInt ? 1 : 0;
 
-			ga('send', 'event', category, action, optLabel, optValue);
+			ga('send', 'event', category, action, optLabel, optValue, {'nonInteraction': nonInt});
 			console.log("%c[TRACKING EVENT] CATEGORY: "+category+" | ACTION: "+action+" | LABEL: "+optLabel +" | VALUE: "+optValue, "background: orange; color: #fff;");
 		},
 
@@ -30,48 +30,6 @@ var analyticos = (function () {
 		trackSocial: function(socialNetwork, socialAction, socialTarget) {
 			ga('send', 'social', socialNetwork, socialAction, socialTarget);
 			console.log("%c[TRACKING SOCIAL] socialNetwork: "+socialNetwork+" | socialAction: "+socialAction+" | socialTarget: "+socialTarget, "background: green; color: #fff;");
-		},
-
-		
-
-		/*
-		call it like this in yer HTML
-		<a target="_blank" href="https://twitter.com/spoilsofbabylon" onClick="analyticos.trackOutboundLink(this, _link, category, action); return false;"></a>
-		*/
-		// trackOutboundLink:function(_link, category, action) {
-		// 	category = category || 0;
-		// 	action = action || 0;
-
-		// 	try {
-		// 		ga('send', 'event', category, action);
-		// 	} catch(err){}
-			
-		// 	setTimeout(function() {window.open(_link.href,'_blank');}, 100);
-
-		// 	console.log("%c[TRACKING EVENT] CATEGORY:"+category+":"+action, "background: orange; color: #fff;");
-		// }
-
-		trackOutboundLink:function(element, category, action, optLabel, optValue){
-			optLabel = optLabel || 0;
-			optValue = optValue || 0;
-	
-			element.on("click", function(e){
-				// e.preventDefault();
-
-				// var href = $(this).attr("href");
-				// var target = $(this).attr("target");
-
-				ga('send', 'event', category, action, optLabel, optValue);
-
-				// setTimeout(function() {
-				// 	var win = window.open(href,target);
-				// 	win.focus();
-				// }, 70);
-
-				console.log("%c[TRACKING EVENT] CATEGORY: "+category+" | ACTION: "+action+" | LABEL: "+optLabel +" | VALUE: "+optValue, "background: orange; color: #fff;");
-
-			});
-			
 		}
   };
 
